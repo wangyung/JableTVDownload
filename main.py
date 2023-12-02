@@ -11,15 +11,15 @@ args = parser.parse_args()
 
 if(len(args.url) != 0):
     url = args.url
-    download(url)
+    download(url, args.destination)
 elif(args.random == True):
     url = av_recommand()
-    download(url)
+    download(url, args.destination)
 elif(args.all_urls != ""):
     all_urls = args.all_urls
     urls = movieLinks(all_urls)
     for url in urls:
-        download(url)
+        download(url, args.destination)
 else:
     # 使用者輸入Jable網址
     url = input('輸入jable網址:')

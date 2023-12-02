@@ -15,7 +15,7 @@ from args import *
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-def download(url):
+def download(url, destination):
   encode = 0 #不轉檔
   action = input('要轉檔嗎?(y/n)')
   if action.lower() == 'y':
@@ -32,9 +32,16 @@ def download(url):
   if os.path.exists(f'{dirName}/{dirName}.mp4'):
     print('番號資料夾已存在, 跳過...')
     return
-  if not os.path.exists(dirName):
-      os.makedirs(dirName)
-  folderPath = os.path.join(os.getcwd(), dirName)
+
+  if destination != "":
+      folder = destination
+  else:
+      folder = os.getcwd()
+
+  folderPath = os.path.join(folder, dirName)
+
+  if not os.path.exists(folderPath):
+      os.makedirs(folderPath)
   
   #配置Selenium參數
   options = Options()

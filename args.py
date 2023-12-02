@@ -14,6 +14,8 @@ def get_parser():
                         help="Jable TV URL to download")
     parser.add_argument("--all-urls", type=str, default="",
                         help="Jable URL contains multiple avs")
+    parser.add_argument("-d", dest="destination", type=str, default="",
+                        help="The folder for save the downloaded files")
     
     return parser
 
